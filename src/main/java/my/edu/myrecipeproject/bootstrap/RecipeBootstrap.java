@@ -1,5 +1,6 @@
 package my.edu.myrecipeproject.bootstrap;
 
+import jakarta.transaction.Transactional;
 import my.edu.myrecipeproject.domain.*;
 import my.edu.myrecipeproject.repositories.CategoryRepository;
 import my.edu.myrecipeproject.repositories.RecipeRepository;
@@ -28,6 +29,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
     }
